@@ -606,29 +606,29 @@ An obsolete but still supported calling form is:
                         (1+ (abbrev-table-get table :abbrev-table-modiff))))
     name))
 
-(defun abbrev--check-chars (abbrev global)
-  "Check if the characters in ABBREV have word syntax in either the
-current (if global is nil) or standard syntax table."
-  (with-syntax-table
-      (cond ((null global) (syntax-table))
-            ;; ((syntax-table-p global) global)
-            (t (standard-syntax-table)))
-    (when (string-match "\\W" abbrev)
-      (let ((badchars ())
-            (pos 0))
-        (while (string-match "\\W" abbrev pos)
-          (cl-pushnew (aref abbrev (match-beginning 0)) badchars)
-          (setq pos (1+ pos)))
-        (error "Some abbrev characters (%s) are not word constituents %s"
-               (apply 'string (nreverse badchars))
-               (if global "in the standard syntax" "in this mode"))))))
+;; (defun abbrev--check-chars (abbrev global)
+;;   "Check if the characters in ABBREV have word syntax in either the
+;; current (if global is nil) or standard syntax table."
+;;   (with-syntax-table
+;;       (cond ((null global) (syntax-table))
+;;             ;; ((syntax-table-p global) global)
+;;             (t (standard-syntax-table)))
+;;     (when (string-match "\\W" abbrev)
+;;       (let ((badchars ())
+;;             (pos 0))
+;;         (while (string-match "\\W" abbrev pos)
+;;           (cl-pushnew (aref abbrev (match-beginning 0)) badchars)
+;;           (setq pos (1+ pos)))
+;;         (error "Some abbrev characters (%s) are not word constituents %s"
+;;                (apply 'string (nreverse badchars))
+;;                (if global "in the standard syntax" "in this mode"))))))
 
 (defun define-global-abbrev (abbrev expansion)
   "Define ABBREV as a global abbreviation for EXPANSION.
 The characters in ABBREV must all be word constituents in the standard
 syntax table."
   (interactive "sDefine global abbrev: \nsExpansion for %s: ")
-  (abbrev--check-chars abbrev 'global)
+  ;; (abbrev--check-chars abbrev 'global)
   (define-abbrev global-abbrev-table (downcase abbrev) expansion))
 
 (defun define-mode-abbrev (abbrev expansion)
@@ -637,7 +637,7 @@ The characters in ABBREV must all be word-constituents in the current mode."
   (interactive "sDefine mode abbrev: \nsExpansion for %s: ")
   (unless local-abbrev-table
     (error "Major mode has no abbrev table"))
-  (abbrev--check-chars abbrev nil)
+  ;; (abbrev--check-chars abbrev nil)
   (define-abbrev local-abbrev-table (downcase abbrev) expansion))
 
 (defun abbrev--active-tables (&optional tables)

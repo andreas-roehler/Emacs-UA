@@ -403,36 +403,36 @@ internal_self_insert (int c, EMACS_INT n)
 
   synt = SYNTAX (c);
 
-  if (!NILP (BVAR (current_buffer, abbrev_mode))
-      && synt != Sword
-      && NILP (BVAR (current_buffer, read_only))
-      && PT > BEGV
-      && (SYNTAX (!NILP (BVAR (current_buffer, enable_multibyte_characters))
-		  ? XFASTINT (Fprevious_char ())
-		  : UNIBYTE_TO_CHAR (XFASTINT (Fprevious_char ())))
-	  == Sword))
-    {
-      EMACS_INT modiff = MODIFF;
-      Lisp_Object sym;
-
-      sym = call0 (Qexpand_abbrev);
-
-      /* If we expanded an abbrev which has a hook,
-	 and the hook has a non-nil `no-self-insert' property,
-	 return right away--don't really self-insert.  */
-      if (SYMBOLP (sym) && ! NILP (sym)
-	  && ! NILP (XSYMBOL (sym)->u.s.function)
-	  && SYMBOLP (XSYMBOL (sym)->u.s.function))
-	{
-	  Lisp_Object prop;
-	  prop = Fget (XSYMBOL (sym)->u.s.function, intern ("no-self-insert"));
-	  if (! NILP (prop))
-	    return 1;
-	}
-
-      if (MODIFF != modiff)
-	hairy = 2;
-    }
+  /* if (!NILP (BVAR (current_buffer, abbrev_mode))
+   *     && synt != Sword
+   *     && NILP (BVAR (current_buffer, read_only))
+   *     && PT > BEGV
+   *     && (SYNTAX (!NILP (BVAR (current_buffer, enable_multibyte_characters))
+   * 		  ? XFASTINT (Fprevious_char ())
+   * 		  : UNIBYTE_TO_CHAR (XFASTINT (Fprevious_char ())))
+   * 	  == Sword))
+   *   {
+   *     EMACS_INT modiff = MODIFF;
+   *     Lisp_Object sym;
+   * 
+   *     sym = call0 (Qexpand_abbrev);
+   * 
+   *     /\* If we expanded an abbrev which has a hook,
+   * 	 and the hook has a non-nil `no-self-insert' property,
+   * 	 return right away--don't really self-insert.  *\/
+   *     if (SYMBOLP (sym) && ! NILP (sym)
+   * 	  && ! NILP (XSYMBOL (sym)->u.s.function)
+   * 	  && SYMBOLP (XSYMBOL (sym)->u.s.function))
+   * 	{
+   * 	  Lisp_Object prop;
+   * 	  prop = Fget (XSYMBOL (sym)->u.s.function, intern ("no-self-insert"));
+   * 	  if (! NILP (prop))
+   * 	    return 1;
+   * 	}
+   * 
+   *     if (MODIFF != modiff)
+   * 	hairy = 2;
+   *   } */
 
   if (chars_to_delete)
     {
