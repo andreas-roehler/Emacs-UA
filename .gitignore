@@ -1,11 +1,56 @@
 # Compiled
 *.elc
+*.o
 
 # Packaging
 .cask
 
 # Backup files
 *~
+*#
+',v
 
 # Undo-tree save-files
 *.~undo-tree
+
+RCS/
+emacs-26.2/test/RCS/
+emacs-26.2/test/RCS/emacs-ua-emacs-lisp-tests.el,v
+abbrev-el.patch
+befehle.org
+emacs-26.2.tar
+emacs-26.2/config.log
+emacs-26.2/etc/DOC
+emacs-26.2/lib-src/ctags
+emacs-26.2/lib-src/ebrowse
+emacs-26.2/lib-src/emacsclient
+emacs-26.2/lib-src/etags
+emacs-26.2/lib-src/hexl
+emacs-26.2/lib-src/make-docfile
+emacs-26.2/lib-src/profile
+emacs-26.2/lib/alloca.h
+emacs-26.2/lib/deps/
+emacs-26.2/lib/dirent.h
+emacs-26.2/lib/fcntl.h
+emacs-26.2/lib/inttypes.h
+emacs-26.2/lib/libegnu.a
+emacs-26.2/lib/libgnu.a
+emacs-26.2/lib/limits.h
+emacs-26.2/lib/signal.h
+emacs-26.2/lib/stdio.h
+emacs-26.2/lib/stdlib.h
+emacs-26.2/lib/string.h
+emacs-26.2/lib/sys/
+emacs-26.2/lib/time.h
+emacs-26.2/lib/unistd.h
+emacs-26.2/lwlib/deps/
+emacs-26.2/lwlib/liblw.a
+emacs-26.2/src/bootstrap-emacs
+emacs-26.2/src/buildobj.h
+emacs-26.2/src/deps/
+emacs-26.2/src/emacs
+emacs-26.2/src/emacs-26.2.1
+emacs-26.2/src/gl-stamp
+emacs-26.2/src/globals.h
+emacs-26.2/src/lisp.mk
+emacs-26.2/src/temacs
