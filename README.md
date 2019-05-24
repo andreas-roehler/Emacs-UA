@@ -19,7 +19,7 @@ New Feature WRT to shipped Emacs:
   cmds.c, <SPACE> doesn't call expand-function for non-word abbrevs yet.
   Use explicit C-x ' --resp. M-x expand-abbrev RET-- for the moment
 
-
+Expanding abbrevs might need an explizit call for now - `C-x '` by default
 
 Travis-ci tests are failing currently due to known travis-issue:
 https://github.com/travis-ci/travis-ci/issues/9073
